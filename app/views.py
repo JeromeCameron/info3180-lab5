@@ -29,7 +29,12 @@ def about():
     """Render the website's about page."""
     return render_template('about.html')
 
-
+@app.route("/secure-page")
+@login_required
+def secure_page():
+    "test"
+    return render_template('secure_page.html')
+    
 @app.route("/login", methods=["GET", "POST"])
 
 def login():
