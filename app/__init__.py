@@ -1,11 +1,14 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask import session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "change this to be a more random key"
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://lab5:pass123@localhost/lab5"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # added just to suppress a warning
+app.secret_key = 'mySecretKey'
+
 
 db = SQLAlchemy(app)
 
