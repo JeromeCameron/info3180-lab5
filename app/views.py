@@ -32,7 +32,7 @@ def about():
 @app.route("/secure-page")
 @login_required
 def secure_page():
-    "test"
+    
     return render_template('secure_page.html')
     
 @app.route("/login", methods=["GET", "POST"])
@@ -63,9 +63,8 @@ def login():
                 login_user(user)
 
                 # remember to flash a message to the user
-                flash("logged in Successfully")
-            
-                return redirect(url_for("secure-page"))  # they should be redirected to a secure-page route instead
+                flash("Logged in Successfully", 'success')
+                return redirect(url_for("secure_page"))  # they should be redirected to a secure-page route instead
             
     return render_template("login.html", form=form)
 
@@ -74,7 +73,7 @@ def login():
 def logout():
     # Logout the user and end the session
     logout_user()
-    flash('You have been logged out.')
+    flash('You have been logged out.', 'info')
     return redirect(url_for('home'))
 
 
